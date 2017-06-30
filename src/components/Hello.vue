@@ -10,10 +10,16 @@
         <div class="col s6">
           <h1 class="center-align" style="color:white;">Wyatt Williams</h1>
           <p class="center-align" style="color:white;">Hi, I'm Wyatt Williams. I studied Physics and Astronomy at the University of Nevada Reno.
-          I'm currently in the transition of becoming a developer. My past experiences have all been computer science based. From sifting</p>
+          The images on this site are taken both from a normal telescope and the photometry photo of Orion was taken with the Great Basin Observatory.
+        </p>
         </div>
         <div class="col s6">
           <h1 class="center-align" style="color:white;">Reading</h1>
+          <div class="readinglist">
+              <ol>
+                <li v-for=""
+              </ol>
+          </div>
         </div>
       </div>
     </div>
@@ -46,6 +52,8 @@
           console.dir(result)
         })
         this.profile = response.data
+        console.log(response[0]['reviews'][0]['review'][1].body)
+        debugger
       })
     }
   }
@@ -53,8 +61,16 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.parallax img {
-  width: 100%;
+@media only screen and (max-width : 950px) {
+  .parallax img {
+    max-height: 130%; /* or a little bit higher */
+  }
+}
+
+@media only screen and (min-width: 933px) {
+  .parallax img {
+    max-height: 170%; /* or higher percentages. It's up to your taste */
+  }
 }
 
 </style>
