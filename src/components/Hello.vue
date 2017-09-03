@@ -1,38 +1,120 @@
 <template>
   <body>
-    <div class="divider"></div>
-     <div class="section">
-       <h5>Section 1</h5>
-       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in semper dui. Pellentesque dictum, dolor non volutpat cursus, nisi leo suscipit augue, eget egestas massa ipsum at ex. Mauris ultrices tincidunt lorem eu ullamcorper. Suspendisse eleifend ac sem vitae efficitur. Aliquam euismod lacus sit amet justo volutpat ultricies et ac enim. Integer euismod est eget placerat ultrices. Praesent convallis consectetur elit, id tempus nunc viverra eget.
-       Sed ultricies tristique fringilla. Phasellus malesuada venenatis lectus sit amet volutpat. Nulla rutrum fermentum ullamcorper. Praesent tempor sit amet erat in egestas. Vivamus sollicitudin tellus sed purus consectetur tempus. Cras ut nisi efficitur, sollicitudin nisl id, dictum felis. Nam vel urna quis nisl fringilla scelerisque in eget est. Nulla nec turpis ut sem sodales fringilla et vel risus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer dictum congue lorem nec tempor.
-       Cras vitae dolor quis turpis rutrum tempus. Mauris sollicitudin fringilla dignissim. Suspendisse at semper libero. Pellentesque tempus faucibus tincidunt. Curabitur vitae consectetur nisl. Nulla vel pretium lectus. Proin lacinia mi justo, molestie venenatis ante ullamcorper eu. Aliquam mollis, elit eu varius feugiat, eros orci aliquam eros, eget convallis erat mauris vitae sapien. Vivamus hendrerit est nibh, a faucibus erat convallis commodo. Nam elementum metus non massa laoreet condimentum. Vivamus ultrices porttitor magna, eget congue ante lacinia vel. Vestibulum accumsan suscipit pulvinar. Sed eu porta neque. Morbi eu vulputate sem.
-       Integer vel finibus dolor. Etiam purus dui, rutrum in eros vitae, vulputate gravida lorem. Suspendisse eu commodo sem, ut tincidunt odio. Integer molestie consequat commodo. Mauris quis lobortis nulla. In hac habitasse platea dictumst. Nunc ut consequat nulla. In imperdiet viverra nulla, ut fermentum velit tristique scelerisque. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nulla luctus tortor vitae arcu vestibulum, vitae efficitur urna hendrerit.
-       Curabitur sit amet nisl malesuada, scelerisque purus in, lobortis elit. Aenean bibendum mi sed augue dapibus, vel tristique est consectetur. Vivamus non tellus in dui porta varius at vel neque. Nulla elit erat, dignissim in venenatis in, commodo ultricies nibh. Ut ullamcorper magna id eros rhoncus, non iaculis sapien viverra. Duis a ligula lectus. Curabitur id tellus a diam rutrum consequat. Ut lacinia nec diam et fringilla. Integer sit amet dolor non lorem suscipit bibendum quis quis libero. </p>
-     </div>
-     <div class="divider"></div>
-     <div class="section">
-       <h5>Section 2</h5>
-       <p>Stuff</p>
-     </div>
-     <div class="divider"></div>
-     <div class="section">
-       <h5>Section 3</h5>
-       <p>Stuff</p>
-     </div>
-  </body>
+    <!---<pre>{{books}}</pre>-->
+    <div class="parallax-container">
+      <div class="parallax">
+          <img src="../assets/Orion.jpg"/>
+      </div>
+    </div>
+    <div class = "section black">
+      <div class ="row">
+        <div class="col s6">
+          <h1 class="center-align" style="color:white;">Wyatt Williams</h1>
+          <p class="center-align" style="color:white;">Hi, I'm Wyatt Williams. I studied Physics and Astronomy at the University of Nevada Reno.
+          With an endless curiosity for wanting to understand how the world works comes with a passion for trying to solve difficult problems.
+          I've been writing computer code since my junior year of college. Many of the problems I've tackled including data mining, image analysis
+          and processing, and writing algorithims in attempt to discover dark matter interactions.
+          <br></br>
+          Today, I'm working with BlackRidge technology that specalizesin network seurity.
+          <br></br>
+          When I'm not attempting to solve a difficult problem, I'm either creating side projects, reading, running marathons, or enjoying a good microbrew.
+          <br></br>
+          The picture of Orion is a photometric photo I took utilizing the Great Basin Observatory. The picture of the moon is a normal photo I took using an
+          old fashioned telescope.
+        </p>
+        </div>
+        <div class="col s6">
+          <h1 class="center-align" style="color:white;">Reading List</h1>
+          <div class="readinglist">
+            <div id="readingList" class="center-align">
+              <ul v-for="book in books" style="color:white;" class="left-align">
+                <img :src="book.volumeInfo.imageLinks.smallThumbnail" style="width:128px;height:128px;" />
+                {{book.volumeInfo.title}} -- by
+                {{book.volumeInfo.authors[0]}}
+              </ul>
+              <a href="https://books.google.com/books?uid=101671443483721840964&as_coll=1001&source=gbs_lp_bookshelf_list">Check out the rest of my bookshelf</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="parallax-container">
+      <div class="parallax">
+          <img src="../assets/Moon3.jpg"/>
+      </div>
+    </div>
+    <div class="section white">
+      <div class="row">
+      <div class="collapsibles"
+          <ul class="collapsible popout" data-collapsible="expandable" v-for="card in cards">
+            <li>
+              <div class="collapsible-header"><h2 class="center-align">{{card.title}}</h2></div>
+              <div class="collapsible-body">
+                <div class="center-align">
+                  {{card.description}}
+                </div>
+              </div>
+            </li>
+          </ul>
+      </div>
+    </div>
+  </div>
+</body>
 </template>
 
 <script>
-export default {
-  name: 'hello',
-  data () {
-    return {
-      msg: 'Blake Sucks Eggs'
+  export default {
+    name: 'Hello',
+    data () {
+      return {
+        books: [],
+        cards: [{
+          title: 'Education',
+          description: 'Graduated With a Bachelor of Science in Physics from the University of Nevada Reno.' +
+                        'Also attained a minor in mathemeticas' +
+                        'I was also was given the Nevada Undergraduate Research award and numerous scholarships throughout my studies' +
+                        'Finished college with a 3.8gpa and multiple dean\'s list acknowledgements'
+        }, {
+          title: 'Research',
+          description: 'Assistant researcher for Dr.Andrei Derevianko\'s research group.' +
+          'The focus of the group was lookng for dark matter interactions. It is theorized that a possible dark matter interaction could be seen by utilizing atomic clocks onboard GPS satellites.' +
+          'Our role was to Data mine freely available GPS data that goes back as far as 14 years (for 32 satellites).' +
+          'We created a searching algorithm that would sift through the data and attempt to find a specific signal generated by a dark matter thin-wall model.' +
+          'My focus also included the noise profiles of atomic clocks and testing the sensitivity of our search' +
+          'in order to provide an accurate analysis of the data.' +
+          'The research I did was funded by the National Science Foundation and the Nevada Undergraduate Research Award',
+          link: 'If you are interested in our work, you can read our paper here: ',
+          poster: 'You can also view the poster I presented at the Undergraduate Research Symposium at the University of Nevada Reno:'
+        }, {
+          title: 'National Security Technologies',
+          description: 'Worked with the Flash X-ray Accelerator (FXR) research group in Livermore, California.' +
+          'Created new features, while optimizing existing features for image-processing software.' +
+          'The goal was to process and analyze calibration radiographic images in order to get real-time feedback and help calibrate the FXR.',
+          poster: 'If you are interested in the concepts behind the calibration take a look at the poster' +
+          'that I presented at the Livermore National Labs: '
+        }]
+      }
+    },
+    created: function () {
+      var self = this
+      this.$http.get('https://www.googleapis.com/books/v1/users/101671443483721840964/bookshelves/1001/volumes?&key=AIzaSyCmE5LBl8ScivGDV9650Avd4qkfF7ixsxA').then(response => {
+        self.books = response.body.items.splice(0, 3)
+        console.log(response.body)
+      })
     }
   }
-}
 </script>
-
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+@media only screen and (max-width : 900px) {
+  .parallax img {
+    max-height: 90%; /* or a little bit higher */
+  }
+}
+
+@media only screen and (min-width: 933px) {
+  .parallax img {
+    max-height: 150%; /* or higher percentages. It's up to your taste */
+  }
+}
 </style>
