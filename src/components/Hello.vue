@@ -1,67 +1,18 @@
 <template>
-  <div>
-    <!---<pre>{{books}}</pre>-->
-    <div class="parallax-container">
-      <div class="parallax">
-          <img src="../assets/Orion.jpg"/>
-      </div>
-    </div>
-    <div class = "section black">
-      <div class ="row">
-        <div class="col s6">
-          <h1 class="center-align" style="color:white;">Wyatt Williams</h1>
-          <p class="center-align" style="color:white;">Hi, I'm Wyatt Williams. I studied Physics and Astronomy at the University of Nevada Reno.
-          With an endless curiosity for wanting to understand how the world works comes a passion for trying to solve difficult problems.
-          I've been writing code since my junior year of college. Many of the problems I've tackled included data mining, image analysis
-          and processing, and writing algorithims in attempt to discover dark matter interactions.
-          <br></br>
-          Today, I'm working with BlackRidge Technology that specializes in network security. I've taken up a position of QA Engineer.
-          Though, a much different direction than Physics, it still involves the complex problem of securing the internet.
-          <br></br>
-          When I'm not attempting to solve a difficult problem, I'm either creating side projects, reading, running marathons, or hanging out with my dog.
-          <br></br>
-          The picture of Orion is a photometric photo I took utilizing the Great Basin Observatory. The picture of the moon is a normal photo I took using an
-          old fashioned telescope.
-        </p>
-        </div>
-        <div class="col s6">
-          <h1 class="center-align" style="color:white;">Reading List</h1>
-          <div class="readinglist">
-            <div id="readingList" class="center-align">
-              <ul v-for="book in books" style="color:white;" class="left-align">
-                <img :src="book.volumeInfo.imageLinks.smallThumbnail" style="width:128px;height:128px;" />
-                {{book.volumeInfo.title}} -- by
-                {{book.volumeInfo.authors[0]}}
-              </ul>
-              <a href="https://books.google.com/books?uid=101671443483721840964&as_coll=1001&source=gbs_lp_bookshelf_list">Check out the rest of my bookshelf</a>
-            </div>
+<div>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m6 offset-m3">
+        <div class="card row">
+          <div class=" col s12 m6 white darken-1">
+            <img class="circle" alt="" src="../assets/me.png">
+          </div>
+          <div class="col s12 m6">
+            <h5 class="center-align"> Wyatt Williams </h5>
+            <h6 class="center-align">   QA Engineer  </h6>
+            <h7 class="center-align"> Network Security, Physics, and Coffee </h7>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="parallax-container">
-      <div class="parallax">
-          <img src="../assets/Moon3.jpg"/>
-      </div>
-    </div>
-    <div class="section white">
-      <div class="row">
-      <div class="collapsibles"
-          <ul class="collapsible popout" data-collapsible="expandable" v-for="card in cards">
-            <li>
-              <div class="collapsible-header"><h2 class="center-align">{{card.title}}</h2></div>
-              <div class="collapsible-body">
-                <div class="center-align">
-                  <div class="flow-text">
-                    <br>{{card.description}}</br>
-                    {{card.link}}<a v-show="card.link" href="https://arxiv.org/abs/1704.06844"> Search for domain wall dark matter with Global Positioning System </a>
-                    <br>{{card.poster}}</br> <a v-show="card.poster" href="https://drive.google.com/open?id=0BwkmFlVQaeVRdzFUd2R5ZzJwXzA"> Simulating Dark Matter Thin Wall Interactions with Atomic Cloacks On Board GPS Satellites</a>
-                    {{card.posterL}} <a v-show="card.posterL" href="https://drive.google.com/open?id=0BwkmFlVQaeVRMHJLMHRIY0pCOTQ"> FXR Image Processing and Analysis Using NSTec's RadPro and ImageTool Software</a>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
       </div>
     </div>
   </div>
@@ -69,64 +20,24 @@
 </template>
 
 <script>
-  export default {
-    name: 'Hello',
-    data () {
-      return {
-        books: [],
-        cards: [{
-          title: 'Education',
-          description: 'Graduated with a Bachelor of Science in Physics from the University of Nevada Reno. ' +
-                        'Also attained a minor in mathematics. ' +
-                        'I was awarded the Nevada Undergraduate Research award and numerous scholarships throughout my studies. ' +
-                        'I finished college with a 3.8gpa and multiple dean\'s list acknowledgements'
-        }, {
-          title: 'Research',
-          description: 'Assistant researcher for Dr.Andrei Derevianko\'s research group. ' +
-          'The focus of the group was lookng for dark matter interactions. It is theorized that a possible dark matter interaction could be seen by utilizing atomic clocks onboard GPS satellites. ' +
-          'Our role was to data mine freely available GPS data that goes back as far as 14 years (for 32 satellites). ' +
-          'We created a searching algorithm that would sift through the data and attempt to find a specific signal generated by a dark matter thin-wall model. ' +
-          'My focus also included the noise profiles of atomic clocks and testing the sensitivity of our search ' +
-          'in order to provide an accurate analysis of the data. ' +
-          'The research I did was funded by the National Science Foundation and the Nevada Undergraduate Research Award.',
-          link: 'If you are interested in our work, you can read our paper here: ',
-          poster: 'You can also view the poster I presented at the Undergraduate Research Symposium at the University of Nevada Reno:'
-        }, {
-          title: 'National Security Technologies',
-          description: 'Worked with the Flash X-ray Accelerator (FXR) research group in Livermore, California. ' +
-          'Created new features, while optimizing existing features for image-processing software. ' +
-          'The goal was to process and analyze calibration radiographic images in order to get real-time feedback and help calibrate the FXR. ',
-          posterL: 'If you are interested in the concepts behind the calibration take a look at the poster' +
-          'that I presented at the Livermore National Labs: '
-        }, {
-          title: 'BlackRidge Technologies',
-          description: 'Currently I am a Quality Assurance Engineer. I help discover, document, and give feedback to developers on how to better or fix the product. ' +
-          'I also do developer bring-up and help debug new code written by developers. ' +
-          'Along with these duties, I\'ve been learning how to create and test different networking set-ups. This includes having knowledge of networking devices, topologies, and how to fix common networking problems.'
-        }]
-      }
-    },
-    created: function () {
-      var self = this
-      this.$http.get('https://www.googleapis.com/books/v1/users/101671443483721840964/bookshelves/1001/volumes?&key=AIzaSyCmE5LBl8ScivGDV9650Avd4qkfF7ixsxA').then(response => {
-        self.books = response.body.items.splice(0, 3)
-        console.log(response.body)
-      })
-    }
-  }
-</script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-@media only screen and (max-width : 50px) {
-  .parallax-container img {
-    max-height: 150%; /* or a little bit higher */
-  }
-}
 
-@media only screen and (min-width: 103px) {
-  .parallax-container img {
-    max-height: 200%; /* or higher percentages. It's up to your taste */
-    max-width: 90%
-  }
+</script>
+
+<style>
+html{
+  background-color: #eeeeee;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg %3E%3Cpolygon fill='%23cccccc' points='800%2C100 0%2C200 0%2C800 1600%2C800 1600%2C200'/%3E%3Cpolygon fill='%23aaaaaa' points='800%2C200 0%2C400 0%2C800 1600%2C800 1600%2C400'/%3E%3Cpolygon fill='%23888888' points='800%2C300 0%2C600 0%2C800 1600%2C800 1600%2C600'/%3E%3Cpolygon fill='%23666666' points='1600%2C800 800%2C400 0%2C800'/%3E%3Cpolygon fill='%23444444' points='1280%2C800 800%2C500 320%2C800'/%3E%3Cpolygon fill='%23222222' points='533.3%2C800 1066.7%2C800 800%2C600'/%3E%3Cpolygon fill='%23000000' points='684.1%2C800 914.3%2C800 800%2C700'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
+.circle {
+  /* margin-right: 250px; */
+  width: 200px !important;
+  height: 200px !important;
+  object-fit: cover;
+}
+.container .row {
+  margin: 0;
 }
 </style>
